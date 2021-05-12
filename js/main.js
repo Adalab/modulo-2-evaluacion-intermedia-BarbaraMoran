@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 const userNumberEl = document.querySelector(".js-input");
 const buttonEl = document.querySelector(".js-button");
 const clueTextEl = document.querySelector(".js-clue");
@@ -6,35 +6,40 @@ const tryTextEl = document.querySelector(".js-try");
 
 //Generar y consolear nº random
 function generateRandomNumber() {
-    const number = Math.round(     Math.random() * 100    );
-    return number;
+  const number = Math.round(Math.random() * 100);
+  return number;
 }
 
 const randomNumber = generateRandomNumber();
-document.addEventListener('load', generateRandomNumber, console.log(randomNumber));
+document.addEventListener(
+  "load",
+  generateRandomNumber,
+  console.log(randomNumber)
+);
 
 //Generar respuesta al nº introducido por la usuaria
-function play (){
-
-    if (userNumberEl.value === randomNumber) {
-    clueTextEl.innerHTML = 'Has ganado campeona';
-    }
-   
-else if (userNumberEl.value > randomNumber && userNumberEl.value < 100) {
-    clueTextEl.innerHTML = 'Demasiado alto';
+function play() {
+  const userNumber = parseInt(userNumberEl.value);
+  if (userNumber === randomNumber) {
+    clueTextEl.innerHTML = "Has ganado campeona";
+  } else if (userNumber > randomNumber && userNumber < 100) {
+    clueTextEl.innerHTML = "Demasiado alto";
+  } else if (userNumber < randomNumber && userNumber !== 0) {
+    clueTextEl.innerHTML = "Demasiado bajo";
+  } else if (userNumber >= 100 || userNumber < 0) {
+    clueTextEl.innerHTML = "El número debe estar entre 1 y 100";
+  }
 }
 
-else if (userNumberEl.value < randomNumber || userNumberEl.value !== 0) {
-    clueTextEl.innerHTML = 'Demasiado bajo';
-}
+buttonEl.addEventListener("click", play);
 
-else if (userNumberEl.value >= 100 || userNumberEl.value === 0) {
-    clueTextEl.innerHTML = 'El número debe estar entre 1 y 100';
-}
+//Generar texto con nº de intentos
 
-}
-buttonEl. addEventListener('click', play);
+let counter = 0;
 
+buttonEl.onclick = function writeTryNumber() {
+  counter++;
+  tryTextEl.innerHTML = `Número de intentos: ${counter}`;
+};
 
-
-
+buttonEl.addEventListener("click", writeTryNumber);
