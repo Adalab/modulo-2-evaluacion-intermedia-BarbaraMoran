@@ -26,7 +26,7 @@ function play() {
     clueTextEl.innerHTML = "Demasiado alto";
   } else if (userNumber < randomNumber && userNumber !== 0) {
     clueTextEl.innerHTML = "Demasiado bajo";
-  } else if (userNumber >= 100 || userNumber < 0) {
+  } else if (userNumber >= 100 || userNumber === 0) {
     clueTextEl.innerHTML = "El número debe estar entre 1 y 100";
   }
 }
