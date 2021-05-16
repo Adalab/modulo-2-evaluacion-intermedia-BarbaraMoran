@@ -37,7 +37,8 @@ buttonEl.addEventListener("click", play);
 
 let counter = 0;
 
-buttonEl.onclick = function writeTryNumber() {
+// buttonEl.onclick = function writeTryNumber() {
+function writeTryNumber() {
   counter++;
   tryTextEl.innerHTML = `Número de intentos: ${counter}`;
 };
