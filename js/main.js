@@ -40,6 +40,7 @@ function writeTryNumber() {
   tryTextEl.innerHTML = `Número de intentos: ${counter}`;
 }
 
+//Función manejadora del botón
 function handleButton() {
   play();
   writeTryNumber();
