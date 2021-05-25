@@ -3,6 +3,14 @@ const userNumberEl = document.querySelector(".js-input");
 const buttonEl = document.querySelector(".js-button");
 const clueTextEl = document.querySelector(".js-clue");
 const tryTextEl = document.querySelector(".js-try");
+const formEl = document.querySelector(".js-form");
+
+//Prevent Default
+function submitPrevent(event) {
+  event.preventDefault();
+}
+
+formEl.addEventListener("submit", submitPrevent);
 
 //Generar y consolear nº random
 function getRandomNumber(max) {
@@ -32,7 +40,6 @@ function play() {
 }
 
 //Generar texto con nº de intentos
-
 let counter = 0;
 
 function writeTryNumber() {
